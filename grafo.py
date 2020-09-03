@@ -5,6 +5,7 @@ class Grafo:
         self.n_arestas = n_arestas
         self.v = list()
         self.e = list()
+        self.adj_matrix = list()
 
     def le_grafo(self):
         """
@@ -21,7 +22,12 @@ class Grafo:
             vertice["Rotulo"] = ' '.join(l[1:])
             self.v.append(vertice.copy())
             vertice.clear()
-        arq.readline()  # Serve para pular a linha em que está escrito '*edges'
+
+            vertice["Rotulo"] = ' '.join(l[1:])
+            vertice["Arestas"] = ([None] * self.n_vertices)
+            self.adj_matrix.append(vertice.copy())
+            vertice.clear()
+        arq.readline()  # Serve para pular a linha em que esta escrito '*edges'
         aresta = dict()
         for l in arq:
             linha = l.split()
@@ -29,6 +35,10 @@ class Grafo:
             aresta["V2"] = linha[1]
             aresta["Peso"] = linha[2]
             self.e.append(aresta.copy())
+            aresta.clear()
+
+            adj_list = self.adj_matrix[int(linha[0]) - 1]["Arestas"]
+            adj_list[int(linha[1]) - 1] = linha[2]
             aresta.clear()
         self.n_arestas = len(self.e)
 
