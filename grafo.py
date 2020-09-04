@@ -4,8 +4,8 @@ class Grafo:
         self.n_vertices = n_vertices
         self.n_arestas = n_arestas
         self.v = list()
-        self.e = list()
         self.adj_matrix = list()
+        self.adj_list = list()
 
     def le_grafo(self):
         """
@@ -14,63 +14,67 @@ class Grafo:
         """
         arq = open(self.file, 'r')
         linha1 = arq.readline().split()
-        vertice = dict()
         self.n_vertices = int(linha1[1])
         for i in range(0, self.n_vertices):
             l = arq.readline().split()
-            vertice["Indice"] = l[0]
-            vertice["Rotulo"] = ' '.join(l[1:])
-            self.v.append(vertice.copy())
-            vertice.clear()
 
-            vertice["Rotulo"] = ' '.join(l[1:])
-            vertice["Arestas"] = ([None] * self.n_vertices)
-            self.adj_matrix.append(vertice.copy())
-            vertice.clear()
+            # Inicia a matriz de adjacencia
+            self.v.append(' '.join(l[1:]))
+            vector = [float('inf')] * self.n_vertices
+            self.adj_matrix.append(vector)
+
+            # Inicia a lista de adjacencia
+            self.adj_list.append(list())
+
+
+
         arq.readline()  # Serve para pular a linha em que esta escrito '*edges'
         aresta = dict()
         for l in arq:
             linha = l.split()
-            aresta["V1"] = linha[0]
-            aresta["V2"] = linha[1]
-            aresta["Peso"] = linha[2]
-            self.e.append(aresta.copy())
-            aresta.clear()
+            v1 = int(linha[0])
+            v2 = int(linha[1])
+            peso = linha[2]
 
-            adj_list = self.adj_matrix[int(linha[0]) - 1]["Arestas"]
-            adj_list[int(linha[1]) - 1] = linha[2]
+            # Popula a matriz de adjacencia
+            self.adj_matrix[v1 - 1][v2 - 1] = peso
+
+            # Popula a lista de adjacencia com a aresta e o peso
+            aresta["vertice"] = v2
+            aresta["peso"] = linha[2]
+            self.adj_list[v1 - 1].append(aresta.copy())
             aresta.clear()
-        self.n_arestas = len(self.e)
+            self.n_arestas += 1
 
     def peso(self, u, v):
         """
         Retorna o peso de uma aresta do grafo
         """
-        pass
+        return self.adj_matrix[u-1][v-1]
 
     def ha_arestas(self, u, v):
         """
         Confere se existe aresta entre u e v
         """
-        pass
+        return (self.adj_matrix[u-1][v-1] != None) or (self.adj_matrix[u-1][v-1] != None)
 
     def vizinhos(self, v):
         """
         Retorna os vizinhos do vertice v
         """
-        pass
+        return self.adj_list[v-1]
 
     def rotulo(self, v):
         """
         Retorna o rotulo do vertice v
         """
-        pass
+        return self.v[v-1]
 
     def grau(self, v):
         """
         Retorna o grau do vertice v
         """
-        pass
+        return len(self.adj_list[v-1])
 
     def qnt_arestas(self):
         """
