@@ -57,4 +57,7 @@ class Busca:
                     self.list_antecessor[index-1] = v_atual
                     q.put(v["vertice"])
 
+        """
+        No retorno, caso seja necessário, podemos retornar também a lista de antecessores
+        """
         return self.list_distancia
