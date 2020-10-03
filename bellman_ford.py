@@ -43,13 +43,13 @@ class Bellman:
                 for j in range(len(self.adj_list[i])):
                     self.relaxamento(i + 1, self.adj_list[i][j]["vertice"])
 
-        for i in range(1, Grafo.qnt_vertices(self.g1)):
-            for j in range(len(self.adj_list[i])):
+        for v1 in range(Grafo.qnt_vertices(self.g1)):
+            for v2 in range(len(self.adj_list[v1])):
 
-                vizinhos = Grafo.vizinhos(self.g1, i - 1)
+                vizinhos = Grafo.vizinhos(self.g1, v1)
                 if vizinhos:
-                    peso_uv = Grafo.peso(self.g1, i - 1, self.adj_list[i - 1][j]["vertice"])
-                    novo_peso = self.peso_caminho[i - 1] + int(peso_uv)
+                    peso_uv = Grafo.peso(self.g1, v1 + 1, self.adj_list[v1][v2]["vertice"])
+                    novo_peso = self.peso_caminho[v1] + int(peso_uv)
 
                     if self.peso_caminho[i] > novo_peso:
                         return None
