@@ -1,0 +1,14 @@
+*vertices 4
+1 "Universidade Federal de Santa Catarina"
+2 "Parque Municipal do Córrego Grande"
+3 "Lagoa da Conceição"
+4 "Lagoa da Conceiçãodois"
+*edges
+1 2 350
+1 4 3
+2 1 4
+2 3 4100
+3 2 2
+3 4 34
+4 3 43
+4 1 2
