@@ -58,28 +58,27 @@ class Ciclo:
 
         while not t_equals_v:
 
-            if not False in self.list_visitado[v_atual-1]:
+            if not False in self.list_visitado[v_atual - 1]:
                 return None
             else:
                 u = 0
-                while self.list_visitado[v_atual-1][u] != False:
+                while self.list_visitado[v_atual - 1][u]:
                     u = u + 1
                 else:
-                    vertice = self.lista_vertices[v_atual-1][u]["vertice"]
-                    self.list_visitado[v_atual-1][u] = True
+                    vertice = self.lista_vertices[v_atual - 1][u]["vertice"]
+                    self.list_visitado[v_atual - 1][u] = True
                     v_atual = vertice
                     ciclo.append(vertice)
             t_equals_v = t == v_atual
 
         for vertice in range(len(self.list_visitado)):
             for e in range(len(self.list_visitado[vertice])):
-                if self.list_visitado[vertice][e] == False:
+                if not self.list_visitado[vertice][e]:
                     subciclo = self.alg_subciclo(self.lista_vertices[vertice][e]["vertice"])
-                    if subciclo == None:
+                    if subciclo is None:
                         return None
                     ciclo = self.adiciona_subciclo(ciclo, subciclo)
         return ciclo
 
     def adiciona_subciclo(self, ciclo, subciclo):
         return 0
-    
