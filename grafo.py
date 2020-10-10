@@ -1,3 +1,5 @@
+import sys
+
 class Grafo:
     def __init__(self, file, n_vertices=0, n_arestas=0):
         self.file = file
@@ -20,7 +22,7 @@ class Grafo:
 
             # Inicia a matriz de adjacencia
             self.v.append(' '.join(l[1:]))
-            vector = [float('inf')] * self.n_vertices
+            vector = [sys.maxsize] * self.n_vertices
             self.adj_matrix.append(vector)
 
             # Inicia a lista de adjacencia
@@ -37,7 +39,7 @@ class Grafo:
             peso = linha[2]
 
             # Popula a matriz de adjacencia
-            self.adj_matrix[v1 - 1][v2 - 1] = peso
+            self.adj_matrix[v1 - 1][v2 - 1] = int(peso)
 
             # Popula a lista de adjacencia com a aresta e o peso
             aresta["vertice"] = v2

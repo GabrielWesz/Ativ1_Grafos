@@ -1,0 +1,11 @@
+*vertices 5
+1 "Universidade Federal de Santa Catarina"
+2 "Parque Municipal do Córrego Grande"
+3 "Lagoa da Conceição"
+4 "Lagoa da Conceiçãodois"
+5 "Outro"
+*edges
+1 2 10
+1 4 3
+2 3 8
+4 5 10
