@@ -1,6 +1,3 @@
-from queue import Queue
-
-
 """
 Implementa funções para mostrar o output de cada exercício
 de acordo com o formato pedido pela atividade
@@ -33,4 +30,39 @@ def exercicio2(list_dist):
         print(f'{n}: ', end="")
         print(*v_list[n])
 
+
+def exercicio3(ciclo):
+    if ciclo is None:
+        print(f'0\n"Nenhum caminho euleriano possivel"')
+    else:
+        print(1)
+        print(*ciclo, sep=", ")
+
+
+def exercicio4(matrix):
+    if matrix is None:
+        print('Erro')
+    else:
+        peso = list()
+        peso.extend(matrix[1])
+        vert = list()
+        vert.extend(matrix[2])
+        for v in range(len(vert)):
+            if vert[v] is not None:
+                print(f'{v}: ', end="")
+                print(*vert[v], sep=',', end="")
+                print(f' d={peso[v]}')
+            else:
+                print(f'{v}: {v}; d={peso[v]}')
+
+
+def exercicio5(matrix):
+    for i in range(len(matrix)):
+        print(f'{i+1}: ', end="")
+        for p in matrix[i]:
+            if p > 10000000000:
+                print(f'{0},', end="")
+            else:
+                print(f'{p},', end='')
+        print()
 

@@ -7,8 +7,6 @@ class Ciclo:
         Cria lista de vértices para indicar o ciclo do grafo (list_ciclo)
         """
         self.g1 = arq_grafo
-        self.list_visitado = list()
-        self.list_ciclo = list()
         self.lista_vertices = self.g1.adj_list
 
 
@@ -39,4 +37,4 @@ class Ciclo:
             ciclo.reverse()
             return ciclo
         else:
-            return "Nenhum caminho euleriano possivel"
+            return None

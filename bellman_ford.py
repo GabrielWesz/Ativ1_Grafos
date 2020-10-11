@@ -3,16 +3,10 @@ from grafo import Grafo
 
 class Bellman:
     def __init__(self, arq_grafo):
-        """
-        Recebe um grafo já lido pelo método grafo.le_grafo()
-        Cria lista para indicar se uma aresta já foi visitada (list_visitado)
-        Cria lista de vértices para indicar o ciclo do grafo (list_ciclo)
-        """
         self.g1 = arq_grafo
         self.peso_caminho = list()
         self.lista_anterior = list()
         self.adj_list = self.g1.adj_list
-
 
     def inicializacao(self, s):
         # Inicia a lista de pesos

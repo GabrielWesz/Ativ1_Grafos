@@ -11,7 +11,6 @@ class Warshall:
         self.g1 = arquivo_grafo
         self.matriz_adj = self.g1.adj_matrix
         self.n_vertices = self.g1.qnt_vertices()
-        print(self.n_vertices)
 
     def floyd_warshall(self):
         # Inicia a matriz distancia com os mesmo valores da matriz de adjacencia.
