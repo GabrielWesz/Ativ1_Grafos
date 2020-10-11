@@ -1,1 +1,25 @@
+Relatório:
 
+Exercício 1) 
+	Para representar o grafo, decidimos criar uma classe Grafo, que contém um método de inicialização, leitura e retorno de informações sobre o grafo.
+	Escolhemos utilizar as duas representações computacionais, lista de adjacências e matriz de adjacências, instanciadas em O(n), 
+  para realizar o retorno das informações do grafo em tempo O(1).
+
+Exercício 2)
+	Neste exercício, criamos uma classe Busca, que possui um método de inicialização e outro que implementa o algoritmo de busca em largura.
+  São instanciadas três listas, que representam se um vértice foi visitado ou não, a distância da origem até o vértice em número de arestas e o vértice antecessor ao atual.
+	Na implementação do algoritmo, é utilizada uma fila para guardar quais são os vértices sucessores do vértice atual, que serão visitados em seguida. 
+  A busca em largura possuí complexidade O(|V| + |E|), ou seja, é linear e depende do número de vértices e do número de arestas.
+  
+Exercício 3)
+	Criamos uma classe Ciclo, que contém um método de inicialização, que inicializa uma copia da lista de adjacências do grafo, e outros dois que implementam o algoritmo de busca de caminho euleriano e outro que retorna o ciclo euleriano, caso exista.
+	 No algoritmo caminho_euleriano() em si, são utilizadas uma pilha e uma lista. A pilha armazena os vértices a serem visitados, a lista, o caminho percorrido. Já o método ciclo_euleriano(), que invoca o anterior, confere se o caminho euleriano retorna ao vértice inicial. A implementação desse algoritmo tem complexidade O(|V| + |E|).
+
+
+Exercício 4)
+	Utilizamos uma classe Bellman, que contém quatro métodos: de inicialização da classe, inicialização do algoritmo, relaxamento e implementação do algoritmo de Bellman-Ford.
+ 	São instanciadas três listas, a primeira contém os pesos dos caminhos (inicialmente populada com valor infinito),  a segunda representa os vértices anteriores e a terceira é uma copia da lista de adjacências do grafo. A implementação do algoritmo de Bellman-Ford tem complexidade O(|V|*|E|).
+
+Exercício 5)
+	No último exercício, criamos uma classe Warshall que possui como métodos a inicialização da classe e a implementação do algoritmo de Floyd-Warshall. Como estrutura de dados, utilizamos uma matriz que é copia da matriz de adjacências do grafo.
+	A complexidade desta implementação é O(|V|3).
