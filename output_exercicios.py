@@ -5,7 +5,6 @@ de acordo com o formato pedido pela atividade
 
 
 def exercicio2(list_dist):
-    print('Exercício 2:')
     nivel_set = set()
     vetores = list()
     ld = list_dist.copy()
@@ -33,7 +32,6 @@ def exercicio2(list_dist):
 
 
 def exercicio3(ciclo):
-    print('Exercício 3: ')
     if ciclo is None:
         print(f'0\n"Nenhum caminho euleriano possivel"')
     else:
@@ -42,7 +40,6 @@ def exercicio3(ciclo):
 
 
 def exercicio4(matrix):
-    print('Exercício 4: ')
     if matrix is None:
         print('Erro')
     else:
@@ -60,7 +57,6 @@ def exercicio4(matrix):
 
 
 def exercicio5(matrix):
-    print('Exercício 5:')
     for i in range(len(matrix)):
         print(f'{i+1}: ', end="")
         for p in matrix[i]:
