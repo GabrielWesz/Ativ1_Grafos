@@ -8,6 +8,8 @@ class Grafo:
         self.v = list()
         self.adj_matrix = list()
         self.adj_list = list()
+        self.arestas = list()
+        self.adj_list_transposed = list()
 
     def le_grafo(self):
         """
@@ -27,6 +29,7 @@ class Grafo:
 
             # Inicia a lista de adjacencia
             self.adj_list.append(list())
+            self.adj_list_transposed.append(list())
 
 
 
@@ -41,11 +44,19 @@ class Grafo:
             # Popula a matriz de adjacencia
             self.adj_matrix[v1 - 1][v2 - 1] = int(peso)
 
+            # Popula a lista de arestas
+            self.arestas.append({"v_origem": v1, "v_destino": v2, "peso": peso})
+
             # Popula a lista de adjacencia com a aresta e o peso
             aresta["vertice"] = v2
             aresta["peso"] = linha[2]
             self.adj_list[v1 - 1].append(aresta.copy())
             aresta.clear()
+            aresta["vertice"] = v1
+            aresta["peso"] = linha[2]
+            self.adj_list_transposed[v2 - 1].append(aresta.copy())
+            aresta.clear()
+
             self.n_arestas += 1
 
     def peso(self, u, v):
@@ -89,3 +100,9 @@ class Grafo:
         Retorna a quantidade de vertices do grafo
         """
         return self.n_vertices
+
+    def qnt_arestas(self):
+        """
+        Retorna a quantidade de arestas
+        """
+        return len(self.arestas)
