@@ -1,0 +1,15 @@
+*vertices 6
+1 "Universidade Federal de Santa Catarina"
+2 "Parque Municipal do Córrego Grande"
+3 "Lagoa da Conceição"
+4 "Mercado Público de Florianópolis"
+5 "Ponte"
+6 "Acesso BR101 - BR282"
+*edges
+1 2 2
+2 3 6
+3 1 8
+3 4 1
+4 6 2
+6 5 4
+5 4 5
