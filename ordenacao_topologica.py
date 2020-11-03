@@ -33,12 +33,14 @@ class Ordenacao:
         self.l_visitado[u][0] = True
         tempo += 1
         self.l_tempo[u][0] = tempo
-
         """
         Aqui vai um for -> para cada vizinho dependente de u, se 
         ainda não foi visitado, visite utilizando algoritmo 17,
         que está na página 69 da apostila
         """
+        for v in Grafo.vizinhos(self.g1, u):
+            if self.l_visitado[v["vertice"]-1][0] is False:
+                print("Chegou no for do dfs_visita_ot")
         """A inserção na lista de ordenação deve ser no início da lista"""
         tempo += 1
         self.l_volta[u][0] = tempo
