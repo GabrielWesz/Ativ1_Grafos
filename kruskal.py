@@ -36,5 +36,5 @@ class Kruskal:
                         S[v].append(e)
                         S[v] = list(dict.fromkeys(S[v]))
 
-        print(A)
+        return A, S
 

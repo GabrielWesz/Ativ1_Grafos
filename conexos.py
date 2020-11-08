@@ -12,7 +12,7 @@ class Conexos:
     def cacula_conexos(self):
         (v_visitados, t_inicial, t_final, anterior) = self.dfs(self.lista_adj)
         (v_visitadosT, t_inicialT, t_finalT, anteriorT) = self.dfs_modificado(self.lista_adj_transposta, t_final.copy())
-        print(anteriorT)
+        return anteriorT
 
     """
     Para avaliar os arcos de maneira decrescente, chame este metodo com o 
