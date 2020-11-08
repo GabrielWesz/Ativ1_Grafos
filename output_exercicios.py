@@ -66,3 +66,22 @@ def exercicio5(matrix):
                 print(f'{p},', end='')
         print()
 
+def exercicio6(i):
+    for j in i:
+        print(f'{j}, ',end='')
+    print()
+
+def exercicio7(l_ordenada):
+    for i in range(len(l_ordenada)):
+        print(f'{l_ordenada[i]} -> ', end='')
+    print()
+
+
+def exercicio8(duplas, soma):
+    v = 0
+    for s in soma:
+        v += sum(s)
+    print(v)
+    for i in duplas:
+        print(f'{i} ',end='')
+    print()

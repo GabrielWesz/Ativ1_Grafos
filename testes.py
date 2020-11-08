@@ -4,7 +4,9 @@ from ciclo_euleriano import Ciclo
 import output_exercicios
 from bellman_ford import Bellman
 from floyd_warshall import Warshall
+from conexos import Conexos
 from ordenacao_topologica import Ordenacao
+from kruskal import Kruskal
 
 arq = input("Digite o nome do arquivo: ")
 g1 = Grafo(arq)
@@ -36,6 +38,20 @@ out_ex5 = ex5.floyd_warshall()
 output_exercicios.exercicio5(out_ex5)
 """
 
+"""-----------------------------------------------------------------------------------------------------------------"""
+print('Atividade 2\nGabriel Wesz e Matheus Eyng')
+ex6 = Conexos(g1)
 ex7 = Ordenacao(g1)
-retorno = ex7.dfs_ot()
-print(retorno)
+ex8 = Kruskal(g1)
+print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=')
+print('Exercício 1: ')
+out_ex6 = ex6.cacula_conexos()
+output_exercicios.exercicio6(out_ex6)
+print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=')
+print('Exercício 2: ')
+out_ex7 = ex7.ordenacao_topologica()
+output_exercicios.exercicio7(out_ex7)
+print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=')
+print('Exercício 3: ')
+out_ex81, out_ex82 = ex8.arvore_minima()
+output_exercicios.exercicio8(out_ex81, out_ex82)

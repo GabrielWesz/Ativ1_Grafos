@@ -1,47 +1,33 @@
 from grafo import Grafo
+import sys
 
 
 class Ordenacao:
 
     def __init__(self, arq_grafo):
         self.g1 = arq_grafo
-        """Define listas e popula com valores iniciais"""
-        self.l_visitado = list()
-        self.l_tempo = list()
-        self.l_volta = list()
-        self.l_ordenacao = list()
+        self.nv = Grafo.qnt_vertices(self.g1)
+        self.lista_adj = self.g1.adj_list
 
-        for v in range(0, Grafo.qnt_vertices(self.g1)):
-            rotulo = Grafo.rotulo(self.g1, v)
-            self.l_visitado.append(list((False, rotulo)))
-            self.l_tempo.append(list((float("inf"), rotulo)))
-            self.l_volta.append(list((float("inf"), rotulo)))
+    def ordenacao_topologica(self):
+        v_visitado = [False] * self.nv
+        ordenado = []
 
-    def dfs_ot(self):
-        tempo = 0
+        for v in range(0, self.nv):
+            if v_visitado[v] is False:
+                self.visita(v, v_visitado, ordenado)
 
-        for u in range(0, Grafo.qnt_vertices(self.g1)):
-            if self.l_visitado[u][0] is False:
-                self.dfs_visita_ot(u, tempo)
+        for i in range(len(ordenado)):
+            aux = ordenado[i]
+            ordenado[i] = Grafo.rotulo(self.g1, aux+1)
+        return ordenado
 
-        return self.l_ordenacao
+    def visita(self, v_atual, v_visitado, ordenado):
+        v_visitado[v_atual] = True
 
-    def dfs_visita_ot(self, vu, temp):
-        u = vu
-        tempo = temp
+        for i in range(len(self.lista_adj[v_atual])):
+            v = self.lista_adj[v_atual][i]["vertice"]-1
+            if v_visitado[v] is False:
+                self.visita(v, v_visitado, ordenado)
 
-        self.l_visitado[u][0] = True
-        tempo += 1
-        self.l_tempo[u][0] = tempo
-        """
-        Aqui vai um for -> para cada vizinho dependente de u, se 
-        ainda não foi visitado, visite utilizando algoritmo 17,
-        que está na página 69 da apostila
-        """
-        for v in Grafo.vizinhos(self.g1, u):
-            if self.l_visitado[v["vertice"]-1][0] is False:
-                print("Chegou no for do dfs_visita_ot")
-        """A inserção na lista de ordenação deve ser no início da lista"""
-        tempo += 1
-        self.l_volta[u][0] = tempo
-        self.l_ordenacao.insert(0, self.l_visitado[u][1])
+        ordenado.insert(0, v_atual)
