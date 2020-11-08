@@ -36,5 +36,12 @@ class Kruskal:
                         S[v].append(e)
                         S[v] = list(dict.fromkeys(S[v]))
 
-        print(A)
+        peso = 0
+        for u in A:
+            for v in range(len(u)):
+                u[v] += 1
+            peso += Grafo.peso(self.g1, u[0], u[1])
+        print(peso)
+        for u in A:
+            print('{:d}-{:d}'.format(u[0], u[1]), end=" ")
 
