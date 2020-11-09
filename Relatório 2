@@ -1,0 +1,29 @@
+Relatório Atividade 2
+
+Alunos: Gabriel Wesz e Matheus Eyng
+
+Exercício 1)
+A classe Ordenação possui 3 métodos responsáveis por implementar o algoritmo que identifica
+componentes fortemente conexas, assim como a busca em profundidade. Utilizamos listas como
+estrutura de dados para organizar a visita aos nodos e guardar o tempo, em níveis, da ida e da volta
+de um dado vértice.
+A complexidade da busca em profundidade é baseada no número de iterações do laço de
+repetição responsável por invocar a visita a um vértice, que ocorre n vezes, sendo n o número de
+vértices, e na checagem das adjacências do nodo, relacionado à quantidade de arcos presentes no
+grafo, logo, a complexidade computacional é O( |V| + |A| )
+
+Exercício 2)
+Neste exercício, criamos uma classe Ordenação, que possui dois métodos que implementam o
+algoritmo de ordenação topológica. O primeiro método é o ‘principal’, onde são inicializadas duas
+listas, que representam a visita a um vértice e a ordenação em si. O segundo método é auxiliar e
+responsável por implementar a recursividade, percorrendo todo vértice ainda não visitado e
+ordenando-os na lista.
+Em relação à complexidade do algoritmo, é a mesma da busca em profundidade, ou seja,
+O(V+E).
+
+Exercício 3)
+Para implementar o algoritmo de Kruskal, utilizamos uma classe Kruskal, que contém o método
+arvore_minima(), responsável por identificar as árvores geradoras. Como estrutura de dados,
+usamos listas.
+A complexidade de tempo do algoritmo de Kruskal está relacionada com o tipo de estrutura de
+dados utilizada em sua implementação, sendo a mais eficiente O( |E| log 2 |E| ).
