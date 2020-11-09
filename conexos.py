@@ -9,10 +9,10 @@ class Conexos:
         self.lista_adj = self.g1.adj_list
         self.lista_adj_transposta = self.g1.adj_list_transposed
 
-    def cacula_conexos(self):
+    def calcula_conexos(self):
         (v_visitados, t_inicial, t_final, anterior) = self.dfs(self.lista_adj)
         (v_visitadosT, t_inicialT, t_finalT, anteriorT) = self.dfs_modificado(self.lista_adj_transposta, t_final.copy())
-        return anteriorT
+        self.formata_output(anteriorT)
 
     """
     Para avaliar os arcos de maneira decrescente, chame este metodo com o 
@@ -57,7 +57,6 @@ class Conexos:
             t_final_anterior[indice] = -1
             decrescente.append(indice)
 
-
         for u in decrescente:
             if not v_visitados[u]:
                 self.dfs_visit(u, v_visitados, t_inicial, t_final, anterior, tempo, lista_adj)
@@ -80,3 +79,26 @@ class Conexos:
 
         tempo[0] = tempo[0] + 1
         t_final[v_origem] = tempo[0]
+
+    def formata_output(self, anteriorT):
+        raizes = list()
+        for vertice in range(len(anteriorT)):
+            if anteriorT[vertice] is None:
+                raizes.append([vertice])
+
+        tamanho = 0
+        while tamanho < self.g1.qnt_vertices():
+            for vertice in range(len(anteriorT)):
+                for raiz in raizes:
+                    if raiz[-1] == anteriorT[vertice]:
+                        raiz.append(vertice)
+            tamanho = 0
+            for r in raizes:
+                tamanho += len(r)
+
+        for r in raizes:
+            for v in range(len(r)):
+                r[v] += 1
+
+        for r in raizes:
+            print(r)

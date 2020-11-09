@@ -1,13 +1,12 @@
 from grafo import Grafo
 
+
 class Kruskal:
 
     def __init__(self, arq_grafo):
         self.g1 = arq_grafo
         self.lista_adj = self.g1.adj_list
         self.lista_arestas = self.g1.arestas
-
-
 
     def arvore_minima(self):
         A = list()
@@ -36,5 +35,11 @@ class Kruskal:
                         S[v].append(e)
                         S[v] = list(dict.fromkeys(S[v]))
 
-        return A, S
-
+        peso = 0
+        for u in A:
+            for v in range(len(u)):
+                u[v] += 1
+            peso += Grafo.peso(self.g1, u[0], u[1])
+        print(peso)
+        for u in A:
+            print('{:d}-{:d}'.format(u[0], u[1]), end=" ")
